@@ -58,11 +58,11 @@ unless node['mongodb3']['config']['key_file_content'].to_s.empty?
 end
 
 # Update the mongodb config file
-template node['mongodb3']['mongod']['config_file'] do
+template node.default['mongodb3']['mongod']['config_file'] do
   source 'mongodb.conf.erb'
   mode 0644
   variables(
-      :config => node['mongodb3']['config']['mongod']
+      :config => node.default['mongodb3']['config']['mongod']
   )
   helpers Mongodb3Helper
 end
